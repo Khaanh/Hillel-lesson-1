@@ -23,18 +23,23 @@ function sum() {
 const COLOR_PINK = 'pink';
 
 function guessColor() {
-  let counter = 0;
+  let counter = 3;
   let colors;
-
-  while (counter < 3) {
+  let checked;
+  
+  while (counter > 0) {
     colors = prompt('Угадай один из цветов: red, black, blue, pink, green', '');
     
     if (colors == COLOR_PINK) {
-      alert(`Вы угадали: ${COLOR_PINK}`)
-      break;
-    }
+      checked = colors;
+    } 
+    counter--;
+  }
 
-    counter++;
+  if (checked == COLOR_PINK) {
+    alert(`Вы угадали: ${checked}`);
+  } else {
+    alert('Вы не угадали')
   }
 }
 // guessColor();
