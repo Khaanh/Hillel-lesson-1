@@ -2,11 +2,11 @@
 function checkArg(a) {
 
   if (typeof a == 'number') {
-    console.log(1);
+    return 1;
   } else if (typeof a == 'string') {
-    console.log(0);
+    return 0;
   } else {
-    console.log(-1);
+    return -1;
   }
 
 }
@@ -30,4 +30,4 @@ function substringExists(str, substr) {
   console.log(str.indexOf(substr));
 }
 
-substringExists('Frontend', 'nd')
+// substringExists('Frontend', 'nd')
