@@ -3,18 +3,22 @@
 function sum() {
   let number = +prompt('Введите число больше 10:', '');
   let sum = 0;
-  
   if (number > 10) {
   
     for (let i = 1; i < number + 1; i++) {
       sum += i;
       console.log(i);
     }
-  
     console.log(`Сумма чисел: ${sum}`);
+    return sum;
+  
+  } else if (number == 0) {
+    alert('Вы нажали "Отмена/ESC')
+  } else {
+    alert('Вы ввели число < 10! ')
   }
 }
-// sum();
+sum();
 
 
 
