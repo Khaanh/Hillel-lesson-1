@@ -56,19 +56,71 @@ function startGame() {
     console.log(`Было загадано число: ${randomNumber}`);
   }
 }
-startGame();
-
-
-
-
-
-
-
-
-
-
-
+// startGame();
 
 
 
 // ======= *Дополнительное задание* =======
+
+// 1) Переворот числа
+
+/**
+ * ф-я getNumber - принимает число
+ * @param {number} number 
+ * @returns {number} перевернутое число
+ */
+
+
+function getNumber(number) {
+  let newNumber = String(number);
+  let revertNumber = '';
+
+
+  for (let i = 1; i < newNumber.length + 1; i++) {
+    revertNumber += newNumber[newNumber.length - [i]];
+  }
+
+  return revertNumber;
+}
+
+getNumber(54321)
+
+
+// 2) Повторяем циклы.
+// Написать функцию generateChessBoard ();
+
+/**
+ * Функция generateChessBoard создает строку из # в шахматном порядке. 
+ * @param {number} size - размер доски, стандартно number = 8
+ * @returns {string}
+*/
+
+function generateChessBoard(number = 8) {
+  let hashtag = '#';
+  let evenRow = '';
+  let oddRow = '';
+
+  for (let i = 0; i < number; i++) {
+
+    evenRow += hashtag
+    
+    if (evenRow.length > 3) {
+      console.log(evenRow);
+      break;
+    }
+
+    for (let j = i; j < number; i++) {
+
+      oddRow += hashtag;
+
+      if (oddRow.length > 2) {
+        console.log(oddRow);
+        break;
+      }
+    }
+
+  }
+
+}
+
+// generateChessBoard();
