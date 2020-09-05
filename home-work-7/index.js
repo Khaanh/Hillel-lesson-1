@@ -40,16 +40,5 @@ function explainer(arr) {
   return newArr
 }
 
-let a = explainer(arr);
-console.log(a);
+explainer(arr);
 
-
-
-// let a = 'true';
-
-// if (a === true) {
-//   console.log(true);
-// } else {
-//   console.log(false);
-// }
-// // console.log(a);
