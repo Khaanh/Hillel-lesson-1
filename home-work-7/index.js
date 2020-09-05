@@ -17,6 +17,7 @@ function explainer(arr) {
   
   // перебираем все "положительные" значения из переменной result
   for (let i = 0; i < result.length; i++) {
+    let objBoolean = {};
     let objNumber = {};
     let objStr = {};
 
@@ -25,14 +26,30 @@ function explainer(arr) {
       objStr.value = result[i],
       objStr.length = result[i].length,
       newArr.push(objStr)
-    } else if (typeof (result[i]) == 'number' || typeof (result[i]) == 'boolean') {
-      objNumber.type = 'Number/Boolean',
+    } else if (typeof (result[i]) == 'number') {
+      objNumber.type = 'Number',
       objNumber.value = result[i]
       newArr.push(objNumber)
+    } else if (result[i] === true) {
+      objBoolean.type = 'Boolean',
+      objBoolean.value = result[i]
+      newArr.push(objBoolean)
     }
   }
   
   return newArr
 }
 
-explainer(arr);
+let a = explainer(arr);
+console.log(a);
+
+
+
+// let a = 'true';
+
+// if (a === true) {
+//   console.log(true);
+// } else {
+//   console.log(false);
+// }
+// // console.log(a);
