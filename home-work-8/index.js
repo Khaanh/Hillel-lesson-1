@@ -1,21 +1,24 @@
 let frontend = ['I am', 'learing', 'JavaScript', 'by', 'practice', 'every', 'day'];
 
-/**
- * ф-я customMap - принимает массив и возвращает новый масив с длинной каждого элемента, не изменяя старый
- * @param {arr} arr 
- * @returns {arr} newArr
- */
 
-function customMap(arr) {
+// Напишите функцию getYoungEmployees(), которая отфильтрует работников возрастом меньше 30 и вернет новый строковой массив ТОЛЬКО их имен.
 
-  let newArr = [];
+// ==================================================================
+let vasia = { name: "Вася", age: 25 };
+let petia = { name: "Петя", age: 30 };
+let masha = { name: "Маша", age: 28 };
+let egor = { name: "Егор", age: 40 };
+let dima = { name: "Дима", age: 35 };
+let lena = { name: "Лена", age: 18 };
 
-  for (let i = 0; i < arr.length; i++) {
+let users = [ vasia, petia, masha, egor, dima, lena ];
 
-    newArr.push(arr[i].length);
-  }
+function getYoungEmployees(arr) {
 
-  return newArr;
+  let usersAge = arr.filter(user => user.age < 30);
+  let usersName = usersAge.map(user => user.name)
+
+  return usersName;
 }
 
-customMap(frontend);
+getYoungEmployees(users)
