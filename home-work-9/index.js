@@ -22,19 +22,11 @@ getYoungEmployees(users)
 // ===== Дополнительное задание =====
 
 function getAverageAge(arr) {
+
   let averageAge = arr.reduce(function (total, person) {
-
-    return total + person.age / arr.length;
+    return total + person.age;
   }, 0)
+
+  return averageAge / arr.length
 }
-getAverageAge(users)
-
-
-
-
-
-
-
-
-
-
+getAverageAge(users);
