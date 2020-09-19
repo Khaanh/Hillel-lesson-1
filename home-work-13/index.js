@@ -28,15 +28,37 @@ function Student(name, arr) {
   };
   
 }
-let student = new Student('Khanh', [0, -4, 25, 15, 11, 28, -2, -10, -10]);
+let student = new Student('Khanh', [4, 1, 8, 9, 10]);
 
 
 // ===== Задание #2 =====
 let students = [];
-console.log(students);
+// console.log(students);
 
 for (let i = 0; i < 5; i++) {
-  students.push(student = new Student(`student${i}`));
+  let arr = [];
+  let count = 0;
+
+  while(count < 5) {
+    arr.push(Math.ceil(Math.random() * 100))
+    count++;
+  }
+
+  students.push(student = new Student(`Khanh ${i}`, arr));
 }
-  
-console.log(students);
+
+function findMaxMark(arr) {
+  let studentName = arr[0].name;
+  let studentScore = arr[0].maxMark();
+
+  for (let i = 0; i < arr.length; i++) {
+    if (studentScore < arr[i].maxMark()) {
+      studentName = arr[i].name;
+      studentScore = arr[i].maxMark();
+    }
+  }
+
+  return studentName
+}
+
+findMaxMark(students)
