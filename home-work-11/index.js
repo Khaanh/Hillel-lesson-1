@@ -7,7 +7,9 @@ function filterUpperCase(str) {
     }
   }
 
-  return arr;
+  let newArr = arr.filter(item => item.length > 0)
+
+  return newArr;
 }
 
 let a = 'рЕгИсТр';
