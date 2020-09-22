@@ -33,7 +33,6 @@ let student = new Student('Khanh', [4, 1, 8, 9, 10]);
 
 // ===== Задание #2 =====
 let students = [];
-// console.log(students);
 
 for (let i = 0; i < 5; i++) {
   let arr = [];
