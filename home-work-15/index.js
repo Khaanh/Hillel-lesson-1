@@ -123,6 +123,21 @@ let human = new Human({
   age: 26,
 })
 
-console.log(human);
-console.log(student);
-console.log(teacher);
+
+
+// Дополнительное ДЗ на деструктуризацию.
+
+// 1.Есть объект с ошибками в ключах.
+let info = {
+  neme: "Michael",
+  surname: "Scofield",
+  specializatin: "Architect"
+}
+
+let {neme: name, surname: surname, specializatin: specialization} = info;
+
+let rightInfo = {
+  name,
+  surname,
+  specialization,
+}
