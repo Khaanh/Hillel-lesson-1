@@ -7,17 +7,28 @@
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  
-  <form id="form-info">
-    <input type="text" id="fName" placeholder="First name">
-    <input type="text" id="lName" placeholder="Second name">
-    <input type="number" id="age" placeholder="Age">
-    <input type="number" id="scores" placeholder="Scores">
-  </form>
-  <div class="form-btns">
-    <button id="get-info">Get info</button>
+  <div id="box"></div>
+  <div class="wrapper">
+    <div class="col">
+      <form id="form-info">
+        <input type="text" id="name" placeholder="First name">
+        <input type="text" id="surname" placeholder="Second name">
+        <input type="number" id="age" placeholder="Age">
+        <input type="text" id="scores" placeholder="Scores: 1, 2, 3, 4, 5">
+      </form>
+      <div class="form-btns">
+        <button id="save-info">Save info</button>
+      </div>
+    </div>
+    <div class="col">
+      <ol id="list-group">
+
+      </ol>
+
+      <button id="update-btn">Update btn</button> 
+    </div>
   </div>
-  
+
   <script src="index.js"></script>
 </body>
 </html>
