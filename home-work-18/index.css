@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {}
+
+.wrapper-holder {
+}
+
+.title {
+  font-size: 38px;
+  line-height: 1.24;
+  margin: 0 0 14px;
+}
+
+.form-order {
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.size-block,
+.ingredients-block {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 36px;
+}
+
+.size-label,
+.ingredients-label {
+  margin-bottom: 14px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.size-input,
+.ingredients-input {
+  height: 18px;
+  width: 18px;
+}
+
+.btn-order {
+  font-size: 24px;
+  padding: 8px 12px;
+  border: none;
+  border: 2px solid #3498db;
+  border-radius: 5px;
+  min-width: 120px;
+  cursor: pointer;
+  background: transparent;
+}

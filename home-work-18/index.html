@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ДЗ 18. Переписываем пример с заказом пиццы</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div class="wrapper-holder">
+      <form class="form-order" id="form-order">
+        <h2 class="title">Select pizza size</h2>
+        <div class="size-block">
+          <label class="size-label">
+            <span>Small: 30 x 30</span>
+            <input type="radio" name="size-value" value="Small" class="size-input">
+          </label>
+          <label class="size-label">
+            <span>Medium: 40 x 40</span>
+            <input type="radio" name="size-value" value="Medium" class="size-input" checked>
+          </label>
+          <label class="size-label">
+            <span>Large: 55 x 55</span>
+            <input type="radio" name="size-value" value="Large" class="size-input">
+          </label>
+        </div>
+
+        <h2 class="title">Select pizza ingredients</h2>
+        <div class="ingredients-block">
+          <label class="ingredients-label">
+            <span>Сheese</span>
+            <input type="checkbox" name="cheese" value="cheese" class="ingredients-input">
+          </label>
+          <label class="ingredients-label">
+            <span>Tomato</span>
+            <input type="checkbox" name="tomato" value="tomato" class="ingredients-input">
+          </label>
+          <label class="ingredients-label">
+            <span>Сhicken</span>
+            <input type="checkbox" name="chicken" value="chicken" class="ingredients-input">
+          </label>
+          <label class="ingredients-label">
+            <span>Beef</span>
+            <input type="checkbox" name="beef" value="beef" class="ingredients-input">
+          </label>
+          <label class="ingredients-label">
+            <span>Sauce</span>
+            <input type="checkbox" name="sauce" value="sauce" class="ingredients-input">
+          </label>
+        </div>
+
+        <button id="btn-order" class="btn-order">Order</button>
+      </form>
+
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
