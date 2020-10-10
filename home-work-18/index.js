@@ -2,6 +2,8 @@ let orderForm = document.querySelector('#form-order');
 let pizzaSize = document.querySelectorAll('.size-input');
 let ingredientsList = document.querySelectorAll('.ingredients-input');
 let orderBtn = document.querySelector('#btn-order');
+let rateBlock = document.querySelector('.rate-block');
+let btnRate = document.querySelectorAll('.btn-rate');
 
 
 // По клику получаем значение из radio/checkbox и сохраняем в переменную
@@ -9,13 +11,12 @@ orderBtn.onclick = function(e) {
   e.preventDefault();
   
   let pizzaSizeValue = 0
-      ingredientsArr = [];
+  ingredientsArr = [];
   
   // Выбор размера пиццы
   for (let i = 0; i < pizzaSize.length; i++) {
     if (pizzaSize[i].checked == true) {
       pizzaSizeValue = pizzaSize[i].value;
-      console.log(pizzaSizeValue);
     }
   }
   
@@ -26,7 +27,11 @@ orderBtn.onclick = function(e) {
     }
   }
   
-  checkIngredients(ingredientsArr, pizzaSizeValue)
+  let checkedFlag = checkIngredients(ingredientsArr, pizzaSizeValue);
+  
+  if (checkedFlag) {
+    confirmOrder(true, ingredientsArr, pizzaSizeValue);
+  }
 }
 
 /**
@@ -37,13 +42,16 @@ orderBtn.onclick = function(e) {
 
 function checkIngredients(arr, selected) {
   let infoMessage = document.querySelector('.info-block');
+  let checked = false;
   
   if (arr.length >= 3) {
-    infoMessage.classList.remove('is-warning')
-    return confirmOrder(true, arr, selected)
+    infoMessage.classList.remove('is-warning');
+    return checked = true
   } else {
-    infoMessage.classList.add('is-warning')
+    infoMessage.classList.add('is-warning');
   }
+  
+  return checked;
 }
 
 /**
@@ -54,38 +62,100 @@ function checkIngredients(arr, selected) {
 */
 
 function confirmOrder(status, ingredients, size) {
-  let arrDescr = [],
-      strArrDescr = '',
-      agreement = false;
-  
-  for (let i = 0; i < ingredients.length; i++) {
-    arrDescr.push(ingredients[i].value);
-  }
-  strArrDescr = arrDescr.join(', ');
+  let arrDescr = [], // масив для вывода ингредиентов
+  strArrDescr = '', // делаем из массива arrDescr - строки, для вывода
+  agreement = false; // результат confirm
   
   if (status) {
-    return agreement = confirm(`Your order: ${size} pizza with ${strArrDescr}, all right?`)
-  }
+    for (let i = 0; i < ingredients.length; i++) {
+      arrDescr.push(ingredients[i].value);
+    }
 
+    strArrDescr = arrDescr.join(', ');
+    agreement = confirm(`Your order: ${size} pizza with ${strArrDescr}, all right?`);
+
+    if (agreement) {
+      allOrders.push(
+        new Order({
+          size: size,
+          ingredients: strArrDescr,
+          status: 'ordered',
+        })
+      )
+      hideForm();
+      showNotific(allOrders);
+    }
+    
+    return agreement;
+  }
+  
   return agreement;
 }
 
+let allOrders = [];
 
-// let test = document.querySelector('#test');
+class Order {
+  constructor(config) {
+    this.size = config.size;
+    this.ingredients = config.ingredients;
+    this.status = config.status;
+  }
 
-// test.onclick = function() {
-//   let a = first();
+  getStatus() {
+    return this.status;
+  }
 
-//   second(a)
-// }
+  getSize() {
+    return this.size;
+  }
+}
 
-// function first() {
-//   alert('first');
-//   return false;
-// }
+/**
+ * hideForm - скрываем форму после подтверждения заказа
+ */
 
-// function second(stat) {
-//   if (stat) {
-//     alert('second')
-//   }
-// }
+function hideForm() {
+  orderForm.classList.add('is-none')
+}
+
+/**
+ * showNotific - показываем статусы приготовление/доставки заказа
+ */
+function showNotific() {
+
+  orderStatus();
+  tookPizza();
+  deliveredPizza();
+  showRate();
+}
+
+function orderStatus() {
+  setTimeout(() => {
+    alert('Your order is being prepared')
+  }, 1000)
+}
+
+function tookPizza() {
+  setTimeout (() => {
+    alert('The courier took the pizza');
+  }, 1500)
+}
+
+function deliveredPizza() {
+  setTimeout(() => {
+    alert('Courier delivered pizza');
+  }, 2000)
+}
+
+function showRate() {
+  setTimeout(() => {
+    rateBlock.classList.remove('is-hidden')
+  }, 2500)
+}
+
+for (let i = 0; i < btnRate.length; i++) {
+  btnRate[i].onclick = function() {
+    rateBlock.classList.add('is-hidden');
+    alert('Thank for your feedback!')
+  } 
+}
