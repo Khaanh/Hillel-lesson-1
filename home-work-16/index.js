@@ -8,13 +8,13 @@ let surname = formInfo.elements.surname;
 let age = formInfo.elements.age;
 let scores = formInfo.elements.scores;
 let groupList = [];
+let updateList = [];
 let student;
 let teacher;
-let updateList = [];
 
-// let li = document.createElement('li');
 
 saveInfo.onclick = function() {
+
   student = new Student ({
     name: name.value,
     surname: surname.value,
@@ -30,33 +30,17 @@ saveInfo.onclick = function() {
     group: groupList, 
   });
 
-  // console.log(teacher.getListOfNamesByAverageMark());
 }
 
-
-let resultList = [];
 
 btnUpdate.onclick = function() {
-  console.log(teacher.getListOfNamesByAverageMark());
-  // teacher.getListOfNamesByAverageMark()
-  resultList.forEach(student => {
+  groupList.forEach(student => {
     let li = document.createElement('li');
-    li.append(`Имя: ${student}`)
-    // li.append(`Имя: ${student.name} Фамилия: ${student.surname} Средняя оценка:${student.averageMark()}`);
-    // li.append(teacher.getListOfNamesByAverageMark());
+    li.append(`Имя: ${student.name} - Фамилия: ${student.surname} - Ср оценка: ${student.averageMark()}`)
     listGroup.append(li)
-    // console.log(teacher.getListOfNamesByAverageMark());
   })
   groupList = [];
-  console.log(resultList);
 }
-
-
-// listGroup.children[i].innerHTML = `<strong> Имя студента: ${teacher.group[i].name}  ${teacher.group[i].surname}</strong> <br> Оценка студента:
-// ${student.averageMark()}`
-
-
-
 
 // ==========================
 class Human {
@@ -129,17 +113,3 @@ class Teacher extends Human{
     );
   }
 }
-
-
-// let teacher = new Teacher({
-//   name: 'Teacher',
-//   surname: 'Teacher Surname',
-//   age: 46,
-//   group: groupList,
-// })
-
-// let human = new Human({
-//   name: 'Khanh',
-//   surname: 'Nguyen',
-//   age: 26,
-// })
