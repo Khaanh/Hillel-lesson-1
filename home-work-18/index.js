@@ -4,6 +4,7 @@ let ingredientsList = document.querySelectorAll('.ingredients-input');
 let orderBtn = document.querySelector('#btn-order');
 let rateBlock = document.querySelector('.rate-block');
 let btnRate = document.querySelectorAll('.btn-rate');
+let cancelPayment = document.querySelector('#cancel-payment');
 
 
 // По клику получаем значение из radio/checkbox и сохраняем в переменную
@@ -41,7 +42,7 @@ orderBtn.onclick = function(e) {
 */
 
 function checkIngredients(arr, selected) {
-  let infoMessage = document.querySelector('.info-block');
+  let infoMessage = document.querySelector('#warning-ingredients');
   let checked = false;
   
   if (arr.length >= 3) {
@@ -84,6 +85,8 @@ function confirmOrder(status, ingredients, size) {
       )
       hideForm();
       showNotific(allOrders);
+    } else {
+      cancelPayment.classList.add('is-warning')
     }
     
     return agreement;
