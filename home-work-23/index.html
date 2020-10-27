@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ДЗ 23. Форма регистрации</title>
+</head>
+<style>
+
+  * {
+    box-sizing: border-box;
+  }
+
+  #form {
+    display: flex;
+    flex-direction: column;
+    max-width: 340px;
+    width: 100%;
+    margin: 30px auto;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+
+  .caption {
+    font-size: 22px;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  input {
+    border-radius: 5px;
+    height: 38px;
+    padding: 4px 12px;
+  }
+
+  .error {
+    color:#e74c3c;
+    font-size: 14px;
+    text-align: left;
+    display: none;
+  }
+
+  .error._is-show {
+    display: block;
+  }
+
+  input {
+    border: 1px solid #bdc3c7;
+    margin-bottom: 4px;
+    outline: none;
+  }
+
+  input:focus {
+    border: 1px solid #3498db;
+  }
+  input._is-error {
+    border: 1px solid #e74c3c;
+  }
+
+  #btn-submit {
+    padding: 12px;
+    max-width: 264px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  #btn-submit:hover {
+    background-color: #2980b9;
+  }
+
+  #btn-submit:disabled {
+    pointer-events: none;
+    background-color: #7f8c8d;
+  }
+
+</style>
+<body>
+
+  <form action="" id="form">
+    <label>
+      <span class="caption">Email</span>
+      <input type="text" name="email" placeholder="Введите почту">
+      <span class="error">Неправильный формат email</span>
+    </label>
+
+    <label>
+      <span class="caption">Имя</span>
+      <input type="text" name="name" placeholder="Введите имя">
+      <span class="error">Вы пропустили имя</span>
+    </label>
+
+    <label>
+      <span class="caption">Пароль</span>
+      <input type="password" name="pass" placeholder="Введите пароль">
+      <span class="error">Пароль должен быть длиней 6 символов</span>
+    </label>
+
+    <label>
+      <span class="caption">Повторение пароля</span>
+      <input type="password" name="repeat" placeholder="Введите пароль">
+      <span class="error">Пароли не совпадают</span>
+    </label>
+
+    <button type="submit" id="btn-submit" disabled="true">Зарегистрироваться</button>
+  </form>
+  
+  <script src="index.js"></script>
+</body>
+</html>
