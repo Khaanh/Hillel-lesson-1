@@ -5,12 +5,16 @@ let inputEmail = inputForm.email;
 let inputName = inputForm.name;
 let inputPass = inputForm.pass;
 let inputRepeat = inputForm.repeat;
-let objResult = [];
+let objResult = {};
 
 inputForm.email.oninput = function() {
     if (!this.value.length) {
         console.log('пустое поле');
     } else {
+        objResult = {
+            email: this.value,
+        }
+        console.log(objResult);
         console.log('заполненное поле');
     }
 }

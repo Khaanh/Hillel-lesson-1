@@ -14,6 +14,45 @@
   .selected {
       background-color: pink;
   }
+
+  #menu-btn {
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+  }
+
+  .btn-action {
+    border: none;
+    display: inline-block;
+    padding: 8px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 6px;
+    color: #fff;
+  }
+  
+  .add-task {
+    border: 2px solid #27ae60;
+    background-color: #2ecc71;
+  }
+
+  .add-to-end {
+    border: 2px solid #3498db;
+    background-color: #2980b9;
+  }
+
+  .remove-task {
+    border: 2px solid #e74c3c;
+    background-color: #c0392b;
+  }
+
+  .sort-list {
+    border: 2px solid #e67e22;
+    background-color: #d35400;
+  }
 </style>
 <body>
   <h1>Задачи на день</h1>
@@ -24,6 +63,14 @@
     <li>Поработать</li>
     <li>Принять гостей</li>
   </ul>
+
+  <div id="menu-btn">
+    <button class="btn-action add-task" id="add-start">Добавить задачу в начало</button>
+    <button class="btn-action add-to-end" id="add-end">Добавить задачу в конец</button>
+    <button class="btn-action remove-task" id="remove-task">Удалить выбранные дела</button>
+    <button class="btn-action sort-list">Отсортировать список</button>
+  </div>
+
   
   <script src="index.js"></script>
 </body>

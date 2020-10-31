@@ -1,4 +1,7 @@
 let ul = document.querySelector('#todo-list');
+let startTask = document.querySelector('#add-start');
+let endTask = document.querySelector('#add-end');
+let removeTask = document.querySelector('#remove-task');
 
 //Отключаем выделение списка
 ul.addEventListener('mousedown', function (e) {
@@ -6,24 +9,48 @@ ul.addEventListener('mousedown', function (e) {
 })
 
 ul.addEventListener('click', function (e) {
-    console.log(e);
-
+    // console.log(e);
     if (e.target == this) {
         return false;
     }
-    if (!e.ctrlKey) {
-        clearSelected(this.children);
-    } 
-    addSelected(e.target);
+    // if (!e.ctrlKey) {
+    //     clearSelected(this.children);
+    // } 
+    toggleSelect(e.target)
 })
 
 function clearSelected(elems) {
     for (let elem of elems) {
-        console.log(elem.classList.remove('selected'));
+        elem.classList.remove('selected')
     }
 }
 
-function addSelected(target) {
-    target.classList.add('selected');
+function toggleSelect(target) {
+    target.classList.toggle('selected');
+    console.log(target);
 }
-let menu = document.querySelector('#menu');
+
+startTask.addEventListener('click', function() {
+    let newTask = prompt('Введите название таска:', '');
+    console.log(newTask);
+    let li = document.createElement('li');
+    li.innerHTML = newTask;
+    ul.prepend(li)
+})
+
+endTask.addEventListener('click', function() {
+    let newTask = prompt('Введите название таска:', '');
+    console.log(newTask);
+    let li = document.createElement('li');
+    li.innerHTML = newTask;
+    ul.append(li)
+})
+
+
+function removeSelectedTask(target){
+    removeTask.addEventListener('click', function(target) {
+        target.classList.add('adsasdasdasd')
+    })
+}
+// removeSelectedTask();
+
