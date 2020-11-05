@@ -15,7 +15,8 @@ ul.addEventListener('click', function (e) {
     }
     // if (!e.ctrlKey) {
     //     clearSelected(this.children);
-    // } 
+    // }
+    
     toggleSelect(e.target)
 })
 
@@ -27,12 +28,10 @@ function clearSelected(elems) {
 
 function toggleSelect(target) {
     target.classList.toggle('selected');
-    console.log(target);
 }
 
 startTask.addEventListener('click', function() {
     let newTask = prompt('Введите название таска:', '');
-    console.log(newTask);
     let li = document.createElement('li');
     li.innerHTML = newTask;
     ul.prepend(li)
@@ -40,17 +39,18 @@ startTask.addEventListener('click', function() {
 
 endTask.addEventListener('click', function() {
     let newTask = prompt('Введите название таска:', '');
-    console.log(newTask);
     let li = document.createElement('li');
     li.innerHTML = newTask;
     ul.append(li)
 })
 
 
-function removeSelectedTask(target){
-    removeTask.addEventListener('click', function(target) {
-        target.classList.add('adsasdasdasd')
-    })
-}
-// removeSelectedTask();
-
+removeTask.addEventListener('click', function() {
+    let elems = ul.children;
+    
+    for (let elem of elems) {
+        if (elem.classList.contains('selected')) {
+            elem.remove();
+        }
+    }
+})

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ДЗ 18. Переписываем пример с заказом пиццы</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div class="wrapper-holder">
+      <form class="form-order" id="form-order">
+
+        <div class="form-order__holder">
+          <h2 class="title">Select pizza size</h2>
+          <div class="size-block">
+            <label class="size-label">
+              <span>Small: 30 x 30</span>
+              <input type="radio" name="size-value" value="Small" class="size-input">
+            </label>
+            <label class="size-label">
+              <span>Medium: 40 x 40</span>
+              <input type="radio" name="size-value" value="Medium" class="size-input" checked>
+            </label>
+            <label class="size-label">
+              <span>Large: 55 x 55</span>
+              <input type="radio" name="size-value" value="Large" class="size-input">
+            </label>
+          </div>
+        </div>
+
+        <div class="form-order__holder">
+          <h2 class="title">Select pizza ingredients</h2>
+          <div class="ingredients-block">
+            <label class="ingredients-label">
+              <span>Сheese</span>
+              <input type="checkbox" name="cheese" value="cheese" id="cheese"class="ingredients-input">
+            </label>
+            <label class="ingredients-label">
+              <span>Tomato</span>
+              <input type="checkbox" name="tomato" value="tomato" id="tomato" class="ingredients-input">
+            </label>
+            <label class="ingredients-label">
+              <span>Сhicken</span>
+              <input type="checkbox" name="chicken" value="chicken" id="chicken" class="ingredients-input">
+            </label>
+            <label class="ingredients-label">
+              <span>Beef</span>
+              <input type="checkbox" name="beef" value="beef" id="beef" class="ingredients-input">
+            </label>
+            <label class="ingredients-label">
+              <span>Sauce</span>
+              <input type="checkbox" name="sauce" value="sauce" id="sauce" class="ingredients-input">
+            </label>
+          </div>
+          <span id="warning-ingredients" class="info-block">Choose more than 3 ingredients please</span>
+          <span id="cancel-payment" class="info-block">You canceled your payment</span>
+        </div>
+
+
+        <button id="btn-order" class="btn-order">Order</button>
+      </form>
+
+      <div class="rate-block is-hidden" id="rate-block">
+        <h3>Please rate our service</h3>
+
+        <div class="rate-buttons">
+          <button class="btn-rate like" type="button" value="like">
+            <span>Like</span>
+          </button>
+          <button class="btn-rate dislike" type="button" value="dislike">
+            <span>Dislike</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
