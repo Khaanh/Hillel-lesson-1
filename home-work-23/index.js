@@ -7,14 +7,22 @@ let inputPass = inputForm.pass;
 let inputRepeat = inputForm.repeat;
 let objResult = {};
 
-inputForm.email.oninput = function() {
-    if (!this.value.length) {
-        console.log('пустое поле');
+form.oninput = function(e) {
+    if (inputEmail.value.includes('@')) {
+        e.target.classList.add('_is-success')
     } else {
-        objResult = {
-            email: this.value,
-        }
-        console.log(objResult);
-        console.log('заполненное поле');
+        e.target.classList.remove('_is-success')
+    }
+
+    if (inputName.value.length != 0) {
+        e.target.classList.add('_is-success')
+    } else {
+        e.target.classList.remove('_is-success')
+    }
+
+    if (inputPass.value.length > 3) {
+        e.target.classList.add('_is-success')
+    } else {
+        e.target.classList.remove('_is-success')
     }
 }
