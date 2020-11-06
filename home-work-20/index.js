@@ -1,7 +1,5 @@
 let ul = document.querySelector('#todo-list');
-let startTask = document.querySelector('#add-start');
-let endTask = document.querySelector('#add-end');
-let removeTask = document.querySelector('#remove-task');
+let menuBtn = document.querySelector('#menu-btn');
 
 //Отключаем выделение списка
 ul.addEventListener('mousedown', function (e) {
@@ -9,7 +7,6 @@ ul.addEventListener('mousedown', function (e) {
 })
 
 ul.addEventListener('click', function (e) {
-    // console.log(e);
     if (e.target == this) {
         return false;
     }
@@ -30,27 +27,39 @@ function toggleSelect(target) {
     target.classList.toggle('selected');
 }
 
-startTask.addEventListener('click', function() {
-    let newTask = prompt('Введите название таска:', '');
+
+menuBtn.addEventListener('click', function(e) {
+    let action = e.target.dataset.action;
     let li = document.createElement('li');
-    li.innerHTML = newTask;
-    ul.prepend(li)
-})
-
-endTask.addEventListener('click', function() {
-    let newTask = prompt('Введите название таска:', '');
-    let li = document.createElement('li');
-    li.innerHTML = newTask;
-    ul.append(li)
-})
-
-
-removeTask.addEventListener('click', function() {
-    let elems = ul.children;
-    
-    for (let elem of elems) {
-        if (elem.classList.contains('selected')) {
-            elem.remove();
+    console.log(ul.children);
+    switch (action) {
+        case 'addStart': {
+            let newTask = prompt('Введите название таска:', '');
+            li.innerHTML = newTask;
+            ul.prepend(li)
+            break;
         }
+        case 'addEnd': {
+            let newTask = prompt('Введите название таска:', '');
+            li.innerHTML = newTask;
+            ul.append(li)
+            break;
+        }
+        case 'remove': {
+            let elems = ul.children;
+            let newArr = [];
+            for (elem of elems) {
+                console.log(elem);
+                if (elem.classList.contains('selected')) {
+                    elem.remove();
+                }
+            }
+            break;
+        }
+        case 'sort': {
+            break;
+        }
+        default:
+            break;
     }
 })
