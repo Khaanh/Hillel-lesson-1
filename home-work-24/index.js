@@ -30,9 +30,18 @@ orderBtn.onclick = function(e) {
   
   let checkedFlag = checkIngredients(ingredientsArr, pizzaSizeValue);
   
-  if (checkedFlag) {
-    confirmOrder(true, ingredientsArr, pizzaSizeValue);
-  }
+  checkedFlag.then(
+    /* Вадим, подскажи, пожалуйста, когда тут пишу result/error => ... - то выдает ошибку, что infoMessage is not defined, и я не могу повесить класс. Но так же понимаю что в зене должен быть 2-е функции result и error, как это можно сделать? */
+    
+    infoMessage => {
+      confirmOrder(true, ingredientsArr, pizzaSizeValue);
+      infoMessage.classList.remove('is-warning');
+    },
+
+    infoMessage => {
+      infoMessage.classList.add('is-warning');
+    }
+  )
 }
 
 /**
@@ -42,17 +51,16 @@ orderBtn.onclick = function(e) {
 */
 
 function checkIngredients(arr, selected) {
-  let infoMessage = document.querySelector('#warning-ingredients');
-  let checked = false;
-  
-  if (arr.length >= 3) {
-    infoMessage.classList.remove('is-warning');
-    return checked = true
-  } else {
-    infoMessage.classList.add('is-warning');
-  }
-  
-  return checked;
+  return new Promise(function(resolve, reject) {
+
+    let infoMessage = document.querySelector('#warning-ingredients');
+    
+    if (arr.length >= 3) {
+      resolve(infoMessage)
+    } else {
+      reject(infoMessage)
+    }
+  })
 }
 
 /**
