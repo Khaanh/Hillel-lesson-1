@@ -31,15 +31,13 @@ orderBtn.onclick = function(e) {
   let checkedFlag = checkIngredients(ingredientsArr, pizzaSizeValue);
   
   checkedFlag.then(
-    /* Вадим, подскажи, пожалуйста, когда тут пишу result/error => ... - то выдает ошибку, что infoMessage is not defined, и я не могу повесить класс. Но так же понимаю что в зене должен быть 2-е функции result и error, как это можно сделать? */
-    
-    infoMessage => {
+    accepted => {
       confirmOrder(true, ingredientsArr, pizzaSizeValue);
-      infoMessage.classList.remove('is-warning');
+      accepted.classList.remove('is-warning');
     },
 
-    infoMessage => {
-      infoMessage.classList.add('is-warning');
+    failed => {
+      failed.classList.add('is-warning');
     }
   )
 }
@@ -91,8 +89,52 @@ function confirmOrder(status, ingredients, size) {
           status: 'ordered',
         })
       )
-      hideForm();
-      showNotific(allOrders);
+      let hidden = hideForm();
+      hidden.then(
+        orderForm => {
+          orderForm.classList.add('is-none')
+        }
+      )
+      
+      let notific = showNotific();
+      notific.then(
+        ms => {
+          setTimeout(() => {
+            alert('Your order is being prepared')
+          }, ms)
+          ms = 1500;
+          return ms;
+        }
+      ).then (
+        ms2 => {
+          setTimeout (() => {
+            alert('The courier took the pizza');
+          }, ms2)
+          ms2 = 2000;
+          return ms2;
+        }
+      ).then (
+        ms3 => {
+          setTimeout(() => {
+            alert('Courier delivered pizza');
+          }, ms3)
+          ms3 = 2500;
+          return ms3;
+        }
+      ).then (
+        ms4 => {
+          setTimeout(() => {
+            rateBlock.classList.remove('is-hidden')
+          }, ms4)
+          return rateBlock;
+        }
+      ).then (
+        rateBlock => {
+          setTimeout(() => {
+            rateBlock.classList.remove('is-hidden')
+          }, 3000)
+        }
+      )
     } else {
       cancelPayment.classList.add('is-warning')
     }
@@ -124,45 +166,22 @@ class Order {
 /**
  * hideForm - скрываем форму после подтверждения заказа
  */
-
 function hideForm() {
-  orderForm.classList.add('is-none')
+  return new Promise(function(resolve, reject) {
+    resolve(orderForm)
+  })
 }
 
 /**
  * showNotific - показываем статусы приготовление/доставки заказа
  */
 function showNotific() {
-
-  orderStatus();
-  tookPizza();
-  deliveredPizza();
-  showRate();
+  return new Promise(function(resolve, reject) {
+    let ms = 1000;
+    resolve (ms);
+  })
 }
 
-function orderStatus() {
-  setTimeout(() => {
-    alert('Your order is being prepared')
-  }, 1000)
-}
-
-function tookPizza() {
-  setTimeout (() => {
-    alert('The courier took the pizza');
-  }, 1500)
-}
-
-function deliveredPizza() {
-  setTimeout(() => {
-    alert('Courier delivered pizza');
-  }, 2000)
-}
-
-function showRate() {
-  setTimeout(() => {
-    rateBlock.classList.remove('is-hidden')
-  }, 2500)
-}
 
 for (let i = 0; i < btnRate.length; i++) {
   btnRate[i].onclick = function() {
