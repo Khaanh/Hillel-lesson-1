@@ -16,33 +16,23 @@ photoInput.addEventListener('keyup', (event) => {
     }
 });
 
-function main() {
-
+async function main() {
     let id = photoInput.value;
     if (!isNaN(id)) {
         photoInput.disabled = true;
+        
+        const response = await fetch(`${url}${photoUrl}/${id}`);
+        const data = await response.json();
+        console.log('data: ', data);
+        const obj = await loadImage(data);
+        console.log('obj: ', obj);
 
-        fetch(`${url}${photoUrl}/${id}`)
-            .then(response => {
-                console.log(response);
-                return response.json();
-            })
-            .then(data => {
-                console.log(data);
-                return loadImage(data);
-            })
-            .then(({
-                image,
-                data
-            }) => {
-                photContainer.append(image);
-                photoHistory.push(data);
-                console.log(photoHistory);
-                photoInput.disabled = false;
-                photoInput.focus();
-            })
+        photContainer.append(obj.image);
+        photoHistory.push(data);
+        console.log(photoHistory);
+        photoInput.disabled = false;
+        photoInput.focus();
     }
-
 }
 
 function loadImage(data) {
@@ -65,15 +55,15 @@ let newPhoto = {
     thumbnailUrl: "https://via.placeholder.com/150/92c952"
 }
 
-function addPhoto(imgObj) {
+async function addPhoto(imgObj) {
     imgObj = JSON.stringify(imgObj);
-    fetch(`${url}${photoUrl}`, { method: 'PUT', body: imgObj})
-    .then( res => {
+
+    try {
+        let res = await fetch(`${url}${photoUrl}`, { method: 'PUT', body: imgObj})
         console.log(res);
-    })
-    .catch( error => {
+    } catch(error) {
         console.log(error);
-    })
+    }
 }
 
 add.onclick = () => {
