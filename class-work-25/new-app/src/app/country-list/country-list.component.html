@@ -1,0 +1,21 @@
+<p>country-list works!</p>
+<ol>
+  <li *ngFor="let country of countries">
+    <b>Country: {{country.name}} </b>
+    <!-- <br> -->
+    <i>- {{country.capital}} </i>
+  </li>
+</ol>
+<br>
+
+<input 
+  type="text" 
+  placeholder="currentCountry" 
+  [(ngModel)]='currentCountry'>
+<br>
+<input 
+  type="text" 
+  placeholder="currentCountry" 
+  [(ngModel)]='currentCapital'>
+
+  <button (click)="addCountry()">Add Country</button>

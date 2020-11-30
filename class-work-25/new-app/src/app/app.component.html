@@ -1,0 +1,16 @@
+<app-header></app-header>
+<br>
+<h1>Hello, {{webApp}} !</h1>
+
+<div>
+  Input type
+  <!-- <input type="text" [value]="webApp"> -->
+  <input type="text" [(ngModel)] = "webApp">
+</div>
+<br>
+
+<button (click) = "changeAppTitle($event)">Change title</button>
+
+
+<app-country-list></app-country-list>
+
