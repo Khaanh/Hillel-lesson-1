@@ -6,17 +6,35 @@
     <title>ДЗ 26. Ваши первые запросы</title>
     <script type="module" src="./index.js"></script>
 
+    <style>
+        .post-container {
+            max-width: 680px;
+            width: 100%;
+        }
+
+        pre {
+            white-space: pre-wrap;
+        }
+    </style>
 </head>
+
 
 <body>
     <h1>Posts block!</h1>
     <label>
         Enter the id of post
-        <input id="photoInput" type="number" name="photo-id">
+        <input id="postID" type="number">
     </label>
     <button id="request">Request</button>
+    <br>
+    <br>
     <div class="post-container">
-
+        Post:
+        <br>
+        <pre id="request-post"></pre>
+        <br>
+        Comments:
+        <pre id="request-comment"></pre>
     </div>
 </body>
 
